@@ -1,4 +1,4 @@
-# Widget-Manager #
+# CompanyManagmentSystem (RPT) #
 
 After being interviewed for a company, I got an interesting assignment to do using Angular 2 Framework.
 I found this assignment interesting since the main goal was to build a simple application and to connect it to a REST apis (that was design following SWAGGER).
