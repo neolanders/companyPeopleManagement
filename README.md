@@ -195,11 +195,14 @@ Like we discuss, in order to make it work, I had to make some modification as we
 - Import the cors package in server.js to deal with CORS issues
 
 ## RUN ON NODE SERVER ON CLOUD9:
-After runing npm-start, open:
-https://widget-manager-git-neolanders.c9users.io:8080/#/
+
+Install MongoDB on cloud9:  https://community.c9.io/t/setting-up-mongodb/1717
+Run MongoDB: ./mongod
+Run server: npm-start
+Open: https://company-people-management-neolanders.c9users.io:8080/#/
 
 ## DEMO:
-https://widget-manager-git-neolanders.c9users.io:8080/#/
+https://company-people-management-neolanders.c9users.io:8080/#/
 
 ## Screens Shot:
 
