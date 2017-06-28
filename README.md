@@ -44,7 +44,7 @@ npm run start
 GO TO SERVER:3001/swagger/index.html#/Companies
 ```
 
-![Alt text](/screenshots/screenSwagger.png?raw=true "Swagger)
+![Alt text](/screenshots/screenSwagger.png?raw=true "Swagger")
 
 *******************************
 TO RUN THIS PROJECT FOLLOW
