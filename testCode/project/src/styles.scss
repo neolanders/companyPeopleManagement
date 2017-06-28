@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+@import './assets/sass/sigfig/variables';
+@import "../node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+@import './assets/sass/sigfig/shared.style';
+
+$fa-font-path: "../node_modules/font-awesome/fonts";
+@import "../node_modules/font-awesome/scss/font-awesome.scss";
+

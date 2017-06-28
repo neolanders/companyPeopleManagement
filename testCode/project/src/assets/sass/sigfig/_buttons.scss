@@ -1,0 +1,40 @@
+@import 'variables';
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/mixins";
+
+
+.btn {
+  min-width:200px;
+  margin-bottom:10px;
+  cursor: pointer;
+  @include button-size($btn-padding-y, $btn-padding-x, $font-size-base-size, $line-height, $btn-border-radius);
+  &:disabled {
+    background-color: $white;
+    border:solid 2px #CBCBCB;
+  }
+  &.not-active {
+    background-color: $white;
+    color:red;
+    border:solid 2px #ef2b2d;
+
+    &:disabled{
+      color:#FFF;
+    }
+  }
+}
+
+.btn-primary {
+  @include button-variant($white, $primary-blue, $primary-blue);
+  &:disabled{
+    background-color: #cccccc;
+    border-color:#cccccc;
+  }
+  &:hover{
+    color:#FFF;
+  }
+}
+
+@media (max-width: 576px) {
+  .btn {
+    width:100%;
+  }
+}

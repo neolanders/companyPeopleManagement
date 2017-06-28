@@ -1,0 +1,47 @@
+<form novalidate [formGroup]="form" (submit)="onSubmit($event)" class="form">
+  <div class="alert" [ngClass]="{'alert-success': success, 'alert-danger': !success}" role="alert" *ngIf="formSubmitted">
+    <span *ngIf="success"><strong>Well done!</strong> You successfully create a new person.</span>
+    <span *ngIf="!success"><strong>Error </strong> This person already exist.</span>
+  </div>
+  <div class="form-group has-feedback custom-feedback" [ngClass]="{'has-danger': (!form.controls['name'].valid && form.controls['name'].touched),
+                                                                   'has-success': (form.controls['name'].valid && form.controls['name'].touched)}">
+    <label for="name" class="control-label">Name<span class="red">*</span></label>
+    <input class="form-control"
+           formControlName="name"
+           id="name"
+           type="text"
+           placeholder="Name">
+    <div class="form-control-feedback"
+         *ngIf="form.controls['name'].hasError('required') && ( form.controls['name'].touched || form.controls['name'].dirty )">
+      Please fill company name!!
+    </div>
+  </div>
+  <div class="form-group has-feedback custom-feedback" [ngClass]="{'has-danger': (!form.controls['email'].valid && form.controls['email'].touched),
+                                                                                      'has-success': (form.controls['email'].valid && form.controls['email'].touched)}">
+    <label for="email" class="control-label">Email</label>
+    <input class="form-control"
+           formControlName="email"
+           id="email"
+           type="email">
+    <div class="form-control-feedback"
+         *ngIf="form.get('email').hasError('required') && ( form.get('email').touched || form.get('email').dirty )">
+      Please enter an email address
+    </div>
+    <div class="form-control-feedback"
+         *ngIf="form.get('email').hasError('pattern') && (form.get('email').touched || form.get('email').dirty)">
+      Please enter your email with format xyz@exemple.com.
+    </div>
+  </div>
+  <div class="form-group has-feedback" [ngClass]="{'has-danger': (!form.controls['companyId'].valid && form.controls['companyId'].touched),
+                                                   'has-success': (form.controls['companyId'].valid && form.controls['companyId'].touched)}">
+    <label for="companyId" class="control-label">Company<span class="red">*</span></label>
+    <select id="companyId" [(ngModel)]="selectedCompanyId" formControlName="companyId">
+      <option *ngFor="let company of companiesInput" [value]="company.id">{{company.name}}</option>
+    </select>
+    <div class="form-control-feedback"
+         *ngIf="form.get('companyId').hasError('required') && (form.get('companyId').touched || form.get('companyId').dirty)">
+      Please select one company.
+    </div>
+  </div>
+  <button [disabled]="!form.valid" type="submit" class="btn btn-primary">Save</button>
+</form>

@@ -1,0 +1,20 @@
+// FIGSIG VARIABLES
+$white: #FFFFFF;
+$primary-blue: #367ab7;
+
+// BOOTSTRAP OVERRIDES VARIABLES
+$font-size-base: 16px;
+$font-size-h1: floor(($font-size-base * 2.3)) !default; // ~37px
+$font-size-h2: floor(($font-size-base * 2)) !default; // ~36px
+$line-height: 16px;
+$card-spacer-y: 20px;
+$btn-border-radius: 2.25rem;
+$font-size-base-size: $font-size-base;
+$btn-padding-y: 10px;
+$btn-padding-x: 10px;
+$icon-font-path: '~bootstrap-sass/assets/fonts/bootstrap/';
+
+
+@import url('https://fonts.googleapis.com/css?family=Nunito');
+
+$font-family-base: 'Nunito', sans-serif;

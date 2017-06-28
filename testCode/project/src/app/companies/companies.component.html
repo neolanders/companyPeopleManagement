@@ -1,0 +1,48 @@
+<div class="companies-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a routerLinkActive="active" class="nav-link" href="#" [routerLink]="['/companies']">Companies</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <h1 class="companies-header__title">Companies RPT</h1>
+    <label>Search Companies:</label>
+    <input #search placeholder="Companies ..." [(ngModel)]="name" (input)="filterCompanies(search.value)">
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 companies-main">
+      <div class="card">
+        <div class="card-header">
+          <h2>Companies</h2>
+        </div>
+        <div class="card-block">
+          <companies-list [companiesInput]="filteredCompanies" (publishCallback)="onPublishCallback($event)">></companies-list>
+        </div>
+      </div>
+    </div><!-- /.ui-main -->
+    <div class="col-sm-4 offset-sm-1 ui-sidebar">
+      <div class="card">
+        <div class="card-header">
+          <h4><strong>Create new company</strong></h4>
+        </div>
+        <div class="card-block">
+          <company-form (publishCallback)="onPublishCallback($event)"></company-form>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header">
+          <h4><strong>Create new Person</strong></h4>
+        </div>
+        <div class="card-block">
+          <person-form [companiesInput]="companies"></person-form>
+        </div>
+      </div>
+    </div><!-- /.ui-sidebar -->
+  </div><!-- /.row -->
+</div><!-- /.container -->

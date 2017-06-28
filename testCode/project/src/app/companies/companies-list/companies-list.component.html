@@ -1,0 +1,21 @@
+<!--<pre>{{companiesInput|json}}</pre>-->
+<div class="card" *ngFor="let company of companiesInput">
+  <div class="card-header">
+    <h4><strong>{{((company)?.name)}}</strong></h4>
+  </div>
+  <div class="card-block">
+    <h4 class="card-title"><strong>Address</strong></h4>
+    <p class="card-text">{{((company)?.address)}}</p>
+    <h4 class="card-title"><strong>Revenue</strong></h4>
+    <p class="card-text">{{((company)?.revenue)}}</p>
+    <h4 class="card-title"><strong>Phone</strong></h4>
+    <p class="card-text">{{((company)?.phone)}}</p>
+    <div class="pull-right">
+      <button type="button" class="btn-primary btn-sm" (click)="editCompany(company)">Edit</button>
+      <button type="button" class="btn-danger btn-sm" (click)="confirmDelete(company)">Delete</button>
+    </div>
+  </div>
+  <div class="card-footer">
+    <a [routerLink]="['/companies/'+company.id+'/peoples']" href="#">People who work here</a>
+  </div>
+</div>

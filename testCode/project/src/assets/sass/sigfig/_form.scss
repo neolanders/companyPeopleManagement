@@ -1,0 +1,58 @@
+@import 'variables';
+@import "../../../../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables";
+@import "../../../../node_modules/font-awesome/scss/variables";
+@import "../../../../node_modules/font-awesome/scss/mixins";
+
+
+input.ng-dirty.ng-invalid {
+  background-color: #ffd3d3;
+}
+
+label {
+  display: inline-block;
+  margin-bottom: 5px;
+  margin-right: 25px;
+  font-weight: normal !important;
+  em {
+    color: #000000;
+  }
+}
+input.ng-dirty.ng-invalid {
+  background-color: #ffd3d3;
+}
+.form-group.custom-feedback.has-feedback {
+  position:relative;
+  &:after {
+    @include fa-icon();
+    position:absolute;
+    right: 10px;
+    top: 5px;
+    margin-top: 32px;
+    z-index: 2;
+    font-size: 1.1rem;
+    color: grey;
+    content: $fa-var-circle;
+  }
+  &.has-danger {
+    &:after {
+      content: $fa-var-exclamation-circle;
+      color: $brand-danger;
+    }
+  }
+  &.has-success {
+    &:after {
+      content: $fa-var-check-circle;
+      color: $brand-success;
+    }
+  }
+}
+.form-control-feedback{
+  width: auto;
+  font-size: 12px;
+  text-align: left;
+  position: relative;
+  color: $brand-danger;
+}
+.has-feedback label ~ .form-control-feedback {
+  top: 0px;
+}

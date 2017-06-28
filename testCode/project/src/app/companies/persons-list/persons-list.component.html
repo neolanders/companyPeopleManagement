@@ -1,0 +1,44 @@
+<!--<pre>{{persons|json}}</pre>-->
+<div class="companies-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a routerLinkActive="active" class="nav-link" href="#" [routerLink]="['/companies']">Companies</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <h1 class="companies-header__title">Companies RPT</h1>
+    <label>Search Company's Peoples:</label>
+    <input #search placeholder="Persons ..." [(ngModel)]="name" (input)="filterPersons(search.value)">
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 companies-main">
+      <div class="card">
+        <div class="card-header">
+          <h2>Company's People - {{((company)?.name)}}</h2>
+        </div>
+        <div class="card-block" *ngIf="company">
+          <div class="card" *ngFor="let person of filteredPersons">
+            <div class="card-header">
+              <h4><strong>{{((person)?.name)}}</strong></h4>
+            </div>
+            <div class="card-block">
+              <h4 class="card-title"><strong>Email</strong></h4>
+              <p class="card-text">{{((person)?.email)}}</p>
+              <div class="pull-right">
+                <button type="button" class="btn-primary btn-sm" (click)="editPerson(person)">Edit</button>
+                <button type="button" class="btn-danger btn-sm" (click)="confirmDelete(person)">Delete</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div><!-- /.ui-main -->
+    <div class="col-sm-4 offset-sm-1 ui-sidebar"></div><!-- /.ui-sidebar -->
+  </div><!-- /.row -->
+</div><!-- /.container -->

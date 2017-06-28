@@ -1,0 +1,32 @@
+<div class="companies-header">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <ul class="nav justify-content-center">
+          <li class="nav-item">
+            <a routerLinkActive="active" class="nav-link" href="#" [routerLink]="['/companies']">Companies</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <h1 class="companies-header__title">Companies RPT</h1>
+  </div>
+</div>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-8 companies-main">
+      <div class="card">
+        <div class="card-header">
+          <h2>Person Details - {{((person)?.name)}}</h2>
+        </div>
+        <div class="card-block" *ngIf="person">
+          <person-form [personInput]="person" [companiesInput]="companies">></person-form>
+        </div>
+      </div>
+    </div><!-- /.ui-main -->
+    <div class="col-sm-4 offset-sm-1 ui-sidebar"></div><!-- /.ui-sidebar -->
+  </div><!-- /.row -->
+</div><!-- /.container -->
+
+
+

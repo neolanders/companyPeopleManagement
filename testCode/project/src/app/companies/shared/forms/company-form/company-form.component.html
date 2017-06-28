@@ -1,0 +1,60 @@
+<form novalidate [formGroup]="form" (submit)="onSubmit($event)" class="form">
+    <div class="alert" [ngClass]="{'alert-success': success, 'alert-danger': !success}" role="alert" *ngIf="formSubmitted">
+      <span *ngIf="success"><strong>Well done!</strong> You successfully create a new company.</span>
+      <span *ngIf="!success"><strong>Error </strong> This company already exist.</span>
+    </div>
+    <div class="form-group has-feedback custom-feedback" [ngClass]="{'has-danger': (!form.controls['name'].valid && form.controls['name'].touched),
+                                                                     'has-success': (form.controls['name'].valid && form.controls['name'].touched)}">
+      <label for="name" class="control-label">Name<span class="red">*</span></label>
+      <input class="form-control"
+             formControlName="name"
+             id="name"
+             type="text"
+             placeholder="Name">
+      <div class="form-control-feedback"
+           *ngIf="form.controls['name'].hasError('required') && ( form.controls['name'].touched || form.controls['name'].dirty )">
+        Please fill company name!!
+      </div>
+    </div>
+    <div class="form-group has-feedback custom-feedback" [ngClass]="{'has-danger': (!form.controls['address'].valid && form.controls['address'].touched),
+                                                                     'has-success': (form.controls['address'].valid && form.controls['address'].touched)}">
+      <label for="name" class="control-label">Address<span class="red">*</span></label>
+      <input class="form-control"
+             formControlName="address"
+             id="address"
+             type="text"
+             placeholder="Address">
+      <div class="form-control-feedback"
+           *ngIf="form.controls['address'].hasError('required') && ( form.controls['address'].touched || form.controls['address'].dirty )">
+        Please fill company adress!!
+      </div>
+    </div>
+    <div class="form-group has-feedback custom-feedback" [ngClass]="{'has-danger': (!form.controls['revenue'].valid && form.controls['revenue'].touched),
+                                                                     'has-success': (form.controls['revenue'].valid && form.controls['revenue'].touched)}">
+      <label for="revenue" class="control-label">Revenue<span class="red">*</span></label>
+      <input class="form-control"
+             formControlName="revenue"
+             id="revenue"
+             type="number"
+             placeholder="Revenue">
+      <div class="form-control-feedback"
+           *ngIf="form.controls['revenue'].hasError('required') && ( form.controls['revenue'].touched || form.controls['revenue'].dirty )">
+        Please fill company revenue!!
+      </div>
+    </div>
+    <div class="form-group has-feedback custom-feedback" [ngClass]="{'has-danger': (!form.controls['phone'].valid && form.controls['phone'].touched),
+                                                                     'has-success': (form.controls['phone'].valid && form.controls['phone'].touched)}">
+      <label for="phone" class="control-label">Phone<span class="red">*</span></label>
+      <input class="form-control"
+             formControlName="phone"
+             id="phone"
+             type="tel"
+             placeholder="Phone"
+             phone>
+      <div class="form-control-feedback"
+           *ngIf="form.controls['phone'].hasError('required') && ( form.controls['phone'].touched || form.controls['phone'].dirty )">
+        Please fill company phone!!
+      </div>
+    </div>
+    <button [disabled]="!form.valid" type="submit" class="btn btn-primary">Save</button>
+</form>
