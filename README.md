@@ -44,6 +44,7 @@ npm run start
 GO TO SERVER:3001/swagger/index.html#/Companies
 ```
 
+![Alt text](/screenshots/screenSwagger.png?raw=true "Swagger)
 
 *******************************
 TO RUN THIS PROJECT FOLLOW
@@ -97,7 +98,9 @@ TO DEAL WITH CORS IN LOCALHOST:
 
 I had to import the cors package in server.js:
 
-var cors = require('cors');  // I've this package to deal with CORS in localhost (ref: https://stackoverflow.com/questions/39071430/enabling-cross-origin-resource-sharing-cors-in-expressjs-framework-on-nodejs-d)
+var cors = require('cors');
+
+(ref: https://stackoverflow.com/questions/39071430/enabling-cross-origin-resource-sharing-cors-in-expressjs-framework-on-nodejs-d)
 
 
 *******************************
@@ -107,12 +110,14 @@ EXIST: (When create new company)
 
 I've added an error test when Company already exist in controllers/company.js
 
+```
 exports.add = function(req, res) {
     Company.findOne({'name': req.body.name}, function(err, result) {
         // I've added an error test when Company already exist, in real life we should add here a specific code error (ex: CompanyAlreadyExist)
         return res.send(500);
     });
     ....
+```
 
 *******************************
 ADD DELETE COMPANY MISSING
@@ -121,58 +126,43 @@ FUNCTION
 
 I've added company delete function in controllers/company.js
 
+```
 exports.delete = function(req, res) { return res.send(500);
     var id = req.params.id;
 	Company.delete({'_id': id}, req.body, function(err, numberAffected) {
+```
 
 I've added company route for delete in routes.js
 
+```
 app.delete('/company/:id', company.delete);
-
+```
 
 
 ## Project Structure
 
-Overview
+Overview (testCode/project/src)
 
+    |── app                     - I part the application in one module (companies.module.ts)
+    │   └──  companies          - Contain all necessary components, forms and services for our app
+    │   |    └── companies-list
+    │   |    └── company-details
+    │   |    └── person-details
+    |   │    └── person-list
+    |   │    └── shared          - Contain forms shared for the entire module
+    |   |         └── forms
+    |   |               └── company-form
+    |   |               └── person-form
+    │   └──--shared              - Contain ui (phone) directive shared for the application
+    |           └── ui
     ├── assets
-    │   └── widgetProperties.json  - Some mocks for widget properties (used in test)
-    │   └── widget.json            - Some mocks for single widget
-    │   └── widgets.json           - Some mocks for widgets list
+    |      └── sass
     |
-    |── dists                   - This folder contain our files for include after processing grunt task
-    │    └── main.js            - Concat file js for our application (see grunt concat task, configuration in GruntFile.js)
-    │    └── widget.css         - Concat file css for our application (see grunt concat task, configuration in GruntFile.js)
-    │    └── widget.min.css     - Concat and minify file css for our application
-    |── fonts
-    |    └──  glyphicons-XXX    - All glyphicons used with Twitter Botstrap
-    |── i18n
-    │   └── lang-en_En.json     - Our ressource bundle (english version)
-    |── libs                    - This folder contain all necessary 3thirds parts libs for our application (should be listed     |   └── angular-cache         under bower.json and generate after bower install)
-    │   └── angular
-    │   └── angular-bootstrap
-    |   └── ..
-    |── modules                  - I part the application into two modules (core and widget)
-    │   └──  core                - Contain all globals for our app
-    │        └── config
-    │        └── filters
-    │   └──  widget              - Contain all needs for widget app
-    │        └── config
-    │        └── controllers
-    |        └── directives
-    |        └── services
-    |        └── tests
-    |        └── views
+    |__ node_modules           - Contain all node modules list under package.json
     |
-    |__ node_modules           - Contain all node modules (bower + grunt + karma + http-server) lister under package.json
-    |
-    └── styles
-    |   ├── css                - Our css files
-    |   └── less               - Our less files
-    └── app.js                 - Main file for angular bootstrap
-    └── GruntFile.js           - Configucations files for our tasks (build...)
     └── karma.conf.js          - Configuration file for our tests
     └── package.json
+    |-- ...                    - Other config files (protractor.conf.js / tsconfig.json ... )
 
 ## Some explanation about my work:
 
@@ -204,32 +194,16 @@ Like we discuss, in order to make it work, I had to make some modification as we
 - Added company route to access delete function in routes.js
 - Import the cors package in server.js to deal with CORS issues
 
-## LOCAL NODE SERVER:
-First copy the package.json.back content to package.json then run server.
-Server run on nodeJs (npm start) on localhost:3000.
-
 ## RUN ON NODE SERVER ON CLOUD9:
 After runing npm-start, open:
 https://widget-manager-git-neolanders.c9users.io:8080/#/
-
-## UI-ROUTER:
-As per requirement, I use angular-ui-router for routing,
-States are defined under modules/widget/config/routes.js
-In order to keep organize my states in the application and for a better understanding  I'm using a helper called
-angular-ui-router.stateHelper which is allow to manage states as a three object.
-
-
-##  SWAGGER REST API DOC:
-
-SERVER:3001/swagger/index.html#/Companies
-
 
 ## DEMO:
 https://widget-manager-git-neolanders.c9users.io:8080/#/
 
 ## Screens Shot:
 
-![Alt text](/screenshots/screenAdd.png?raw=true "Add View")
+![Alt text](/screenshots/screenCompaniesList.png?raw=true "Companies List View")
 
 
 
