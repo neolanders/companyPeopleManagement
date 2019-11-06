@@ -9,7 +9,7 @@
     "swagger-jsdoc": "^1.3.0"
   },
   "devDependencies": {
-    "mongoose": "^4.8.4"
+    "mongoose": "^5.7.8"
   },
   "scripts": {
     "mongo": "mongod --dbpath data/db",
